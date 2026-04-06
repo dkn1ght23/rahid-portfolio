@@ -19,8 +19,8 @@ export type ServiceItem = {
 };
 
 export const heroAssets = {
-  logo: "https://www.figma.com/api/mcp/asset/ac9c8856-4f36-4a80-9dde-ea549cab58fb",
-  logoMark: "https://www.figma.com/api/mcp/asset/b0cdf929-92fd-42b1-b3b8-76649d89c58f",
+  logo: "https://www.figma.com/api/mcp/asset/14f278a1-a148-4a46-b0d9-592f267414e2",
+  logoMark: "https://www.figma.com/api/mcp/asset/85d8ec59-2b65-4ebb-bb00-a39918a3bba7",
   portrait: "https://www.figma.com/api/mcp/asset/61825cb6-3809-4993-83fb-a5ebe79afb1b",
   arrowDown:
     "https://www.figma.com/api/mcp/asset/8f65a88a-ea70-49e4-9768-0d9ea8f2bd01",
