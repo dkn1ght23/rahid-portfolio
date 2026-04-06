@@ -4,12 +4,24 @@ import type { ProjectItem } from "@/src/lib/site-data";
 type ProjectCardProps = {
   project: ProjectItem;
   height?: number;
+  ratio?: number;
+  imageWidth?: string | number;
+  imageHeight?: string | number;
+  imageRadius?: number;
+  imageShadow?: string;
+  imagePadding?: number;
   showMeta?: boolean;
 };
 
 export function ProjectCard({
   project,
   height = 320,
+  ratio = 1.55,
+  imageWidth = "100%",
+  imageHeight = "100%",
+  imageRadius = 0,
+  imageShadow,
+  imagePadding = 0,
   showMeta = false,
 }: ProjectCardProps) {
   return (
@@ -20,11 +32,11 @@ export function ProjectCard({
         style={{
           overflow: "hidden",
           background: project.bg ?? "#fbfbfb",
-          border: "1px solid rgba(16,16,16,0.04)",
-          boxShadow: "var(--shadow-soft)",
+          border: "none",
+          boxShadow: "none",
         }}
       >
-        <AspectRatio ratio={1.55} mih={height}>
+        <AspectRatio ratio={ratio} mih={height}>
           <Box
             style={{
               width: "100%",
@@ -32,6 +44,7 @@ export function ProjectCard({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              padding: imagePadding,
             }}
           >
             <Image
@@ -39,9 +52,11 @@ export function ProjectCard({
               alt={project.title}
               fit={project.imageFit ?? "cover"}
               style={{
-                width: "100%",
-                height: "100%",
+                width: imageWidth,
+                height: imageHeight,
                 objectPosition: project.imagePosition ?? "center",
+                borderRadius: imageRadius,
+                boxShadow: imageShadow,
               }}
             />
           </Box>

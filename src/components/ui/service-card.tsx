@@ -15,7 +15,7 @@ function Layer(offset: number, rotate: number, zIndex: number) {
         width: 126,
         height: 140,
         borderRadius: 19,
-        background: "#ececec",
+        background: "#d9d9d9",
         transform: `rotate(${rotate}deg)`,
         zIndex,
       }}
@@ -25,44 +25,44 @@ function Layer(offset: number, rotate: number, zIndex: number) {
 
 export function ServiceCard({ title }: ServiceCardProps) {
   return (
-    <Stack align="center" gap={20}>
+    <Stack align="center" gap={31} h="100%" maw={321} mx="auto" w="100%">
       <Card
-        radius={24}
+        radius={0}
         p={0}
         bg="transparent"
-        styles={{
-          root: {
-            width: 220,
-            height: 190,
-            position: "relative",
-            overflow: "visible",
-            transition: "transform 180ms ease, filter 180ms ease",
-            filter: "drop-shadow(0 12px 22px rgba(16,16,16,0.06))",
-            "&:hover": {
-              transform: "translateY(-6px)",
-              filter: "drop-shadow(0 18px 30px rgba(16,16,16,0.10))",
-            },
-          },
+        style={{
+          width: "100%",
+          maxWidth: 321,
+          height: 196,
+          position: "relative",
+          overflow: "visible",
+          marginInline: "auto",
         }}
       >
-        {Layer(18, -10, 1)}
-        {Layer(76, 0, 3)}
-        {Layer(134, 10, 2)}
+        {Layer(0, -10, 1)}
+        {Layer(172, 10, 2)}
         <Box
           style={{
             position: "absolute",
             top: 0,
-            left: 54,
-            width: 112,
-            height: 162,
-            borderRadius: 20,
-            border: "7px solid white",
-            background: "#ececec",
-            zIndex: 4,
+            left: 70,
+            width: 180,
+            height: 196,
+            borderRadius: 19,
+            background: "#d9d9d9",
+            zIndex: 3,
           }}
         />
       </Card>
-      <Text ta="center" fz={16} fw={500} c="rgba(16,16,16,0.78)">
+      <Text
+        ta="center"
+        fz={20}
+        fw={400}
+        lh="24px"
+        c="rgba(0,0,0,0.7)"
+        w="100%"
+        style={{ letterSpacing: -0.6 }}
+      >
         {title}
       </Text>
     </Stack>

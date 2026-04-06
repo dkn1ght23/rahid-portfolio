@@ -1,42 +1,48 @@
-import { Box, Group, Image, Text } from "@mantine/core";
+import { Box, Group, Text } from "@mantine/core";
 import { heroAssets } from "@/src/lib/site-data";
 import { SectionShell } from "@/src/components/ui/section-shell";
 
 export function NavbarSection() {
   return (
     <SectionShell
-      pt={{ base: 16, md: 24 }}
-      pb={{ base: 12, md: 16 }}
-      style={{
-        backdropFilter: "blur(14px)",
-        background: "rgba(255,255,255,0.82)",
-        borderBottom: "1px solid rgba(16,16,16,0.08)",
-      }}
+      pt={{ base: 16, md: 40 }}
+      pb={0}
     >
-      <Group justify="space-between" align="center" style={{ minHeight: 48 }}>
-        <Box style={{ position: "relative", width: 94, height: 32, flexShrink: 0 }}>
-          <Image src={heroAssets.logo} alt="Shofik UI" w="100%" h="auto" fit="contain" />
+      <Group justify="flex-start" align="flex-start" style={{ minHeight: 36 }}>
+        <Box style={{ position: "relative", width: 94, height: 36, flexShrink: 0 }}>
+          <Box
+            component="img"
+            src={heroAssets.logo}
+            alt="Shofik UI"
+            w={94}
+            h={19}
+            style={{ display: "block", objectFit: "contain" }}
+          />
           <Group
-            gap={4}
+            gap={2}
             wrap="nowrap"
-            style={{ position: "absolute", left: 8, bottom: -4 }}
+            style={{ position: "absolute", left: 9, top: 21 }}
           >
-            <Image src={heroAssets.logoMark} alt="" w={6} h={6} />
+            <Box
+              component="img"
+              src={heroAssets.logoMark}
+              alt=""
+              w={5.4}
+              h={5.4}
+              style={{ display: "block", objectFit: "contain" }}
+            />
             <Text
               tt="uppercase"
-              fz={10}
-              c="rgba(0,0,0,0.45)"
-              style={{ letterSpacing: -0.25 }}
+              fz={12.6}
+              fw={400}
+              c="rgba(0,0,0,0.44)"
+              lh={1}
+              style={{ letterSpacing: -0.38 }}
             >
               UI Designer
             </Text>
           </Group>
         </Box>
-        <Box
-          w={94}
-          aria-hidden="true"
-          style={{ opacity: 0, pointerEvents: "none", flexShrink: 0 }}
-        />
       </Group>
     </SectionShell>
   );

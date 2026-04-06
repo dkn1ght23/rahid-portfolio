@@ -15,47 +15,90 @@ export function PillButton({
 }: PillButtonProps) {
   return (
     <Button
-      radius="xl"
-      size="md"
+      radius={33}
+      size="compact-md"
       variant="filled"
       color={dark ? "dark.9" : "gray.0"}
+      leftSection={
+        reversed ? undefined : (
+          <Group
+            justify="center"
+            align="center"
+            w={36}
+            h={36}
+            style={{
+              background: dark ? "#ffffff" : "#101010",
+              borderRadius: 100,
+              boxShadow: reversed
+                ? "none"
+                : "0 1px 2px rgba(0,0,0,0.10), 0 4px 4px rgba(0,0,0,0.09), 0 10px 6px rgba(0,0,0,0.05)",
+              flexShrink: 0,
+            }}
+          >
+            <Image src={icon} alt="" w={16} h={16} />
+          </Group>
+        )
+      }
+      rightSection={
+        reversed ? (
+          <Group
+            justify="center"
+            align="center"
+            w={36}
+            h={36}
+            style={{
+              background: dark ? "#ffffff" : "#101010",
+              borderRadius: 100,
+              boxShadow: "0 1px 2px rgba(0,0,0,0.10), 0 4px 4px rgba(0,0,0,0.09), 0 10px 6px rgba(0,0,0,0.05)",
+              flexShrink: 0,
+            }}
+          >
+            <Image src={icon} alt="" w={16} h={16} />
+          </Group>
+        ) : undefined
+      }
       styles={{
         root: {
-          height: 52,
-          paddingInline: reversed ? 16 : 24,
-          boxShadow: dark
-            ? "0 10px 18px rgba(16,16,16,0.08), 0 18px 30px rgba(16,16,16,0.06)"
-            : undefined,
+          height: 44,
+          paddingLeft: reversed ? 20 : 4,
+          paddingRight: reversed ? 4 : 20,
+          gap: 8,
+          boxShadow: reversed || !dark
+            ? undefined
+            : "0 6px 12px rgba(0,0,0,0.10), 0 22px 22px rgba(0,0,0,0.09), 0 50px 30px rgba(0,0,0,0.05)",
           transition: "transform 160ms ease, box-shadow 160ms ease",
           "&:hover": dark
             ? {
                 transform: "translateY(-1px)",
-                boxShadow: "0 14px 22px rgba(16,16,16,0.10), 0 24px 36px rgba(16,16,16,0.08)",
+                boxShadow: reversed
+                  ? undefined
+                  : "0 8px 14px rgba(0,0,0,0.12), 0 24px 24px rgba(0,0,0,0.10), 0 50px 30px rgba(0,0,0,0.06)",
               }
             : undefined,
         },
         inner: {
           display: "flex",
-          flexDirection: reversed ? "row-reverse" : "row",
           gap: 8,
           alignItems: "center",
         },
+        section: {
+          margin: 0,
+        },
+        label: {
+          padding: 0,
+        },
       }}
     >
-      <Group gap={8} wrap="nowrap">
-        <Text
-          c={dark ? "white" : "dark.9"}
-          fz={14}
-          fw={400}
-          lh="normal"
-          style={{ letterSpacing: 0.14 }}
-        >
-          {label}
-        </Text>
-
-        {/* Icon as visual element ONLY (not a button) */}
-        <Image src={icon} alt="" w={16} h={16} />
-      </Group>
+      <Text
+        c={dark ? "white" : "dark.9"}
+        fz={14}
+        fw={400}
+        lh="normal"
+        tt="capitalize"
+        style={{ letterSpacing: 0.14 }}
+      >
+        {label}
+      </Text>
     </Button>
   );
 }
