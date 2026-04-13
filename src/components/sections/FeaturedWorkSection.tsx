@@ -1,8 +1,8 @@
-import { Box, Stack, Text } from "@mantine/core";
+import { Box, Button, Group, Stack, Text } from "@mantine/core";
 import { featuredProjects, heroAssets } from "@/src/lib/site-data";
 import { ProjectCard } from "@/src/components/ui/project-card";
 import { SectionShell } from "@/src/components/ui/section-shell";
-import { PillButton } from "@/src/components/ui/pill-button";
+import { IconArrowDown } from "@tabler/icons-react";
 
 export function FeaturedWorkSection() {
   return (
@@ -50,12 +50,29 @@ export function FeaturedWorkSection() {
           />
         </Box>
         <Box style={{ width: "100%", maxWidth: 286, alignSelf: "flex-end" }}>
-          <Stack gap={22} maw={286}>
-            <PillButton
-              label="Hire Me"
-              icon={heroAssets.arrowDown}
-              reversed
-            />
+          <Stack gap={22}>
+           <Box>
+             <Button 
+            bg="#000000"
+            radius={33}
+            h={44}
+            rightSection={<Group
+              justify="center"
+              align="center"
+              w={36}
+              h={36}
+              style={{
+                background: "#ffffff",
+                borderRadius: "100px",
+              }}
+            >
+              <IconArrowDown color="#000000" />
+            </Group>} 
+            
+            >
+            Hire Me
+            </Button>
+           </Box>
             <Text fz={16} lh="24px" c="rgba(0,0,0,0.7)">
               A collection of my designs that are simple, effective, and
               designed to perform.

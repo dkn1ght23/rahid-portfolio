@@ -1,15 +1,14 @@
 import { Button, Group, Image, Text } from "@mantine/core";
+import { IconArrowDown } from "@tabler/icons-react";
 
 type PillButtonProps = {
   label: string;
-  icon: string;
   reversed?: boolean;
   dark?: boolean;
 };
 
 export function PillButton({
   label,
-  icon,
   reversed = false,
   dark = true,
 }: PillButtonProps) {
@@ -35,7 +34,7 @@ export function PillButton({
               flexShrink: 0,
             }}
           >
-            <Image src={icon} alt="" w={16} h={16} />
+            <IconArrowDown color="#000000" />
           </Group>
         )
       }
@@ -53,7 +52,7 @@ export function PillButton({
               flexShrink: 0,
             }}
           >
-            <Image src={icon} alt="" w={16} h={16} />
+      <IconArrowDown color="#000000" />
           </Group>
         ) : undefined
       }

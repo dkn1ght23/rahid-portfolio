@@ -1,9 +1,3 @@
-export type SocialLink = {
-  label: string;
-  href: string;
-  icon: string;
-};
-
 export type ProjectItem = {
   title: string;
   category: string;
@@ -32,28 +26,6 @@ export const heroAssets = {
     "https://www.figma.com/api/mcp/asset/4a295a94-c9b0-4ae9-a909-7faa72fe078e",
 };
 
-export const socialLinks: SocialLink[] = [
-  {
-    label: "Instagram",
-    href: "#",
-    icon: "https://www.figma.com/api/mcp/asset/927c95a5-4fe1-4791-8688-09021939a1a1",
-  },
-  {
-    label: "X",
-    href: "#",
-    icon: "https://www.figma.com/api/mcp/asset/c742c5a3-073e-4f16-acbe-d2285305f215",
-  },
-  {
-    label: "Dribbble",
-    href: "#",
-    icon: "https://www.figma.com/api/mcp/asset/561093aa-17e8-4b88-8e0f-53210cbfbf1b",
-  },
-  {
-    label: "LinkedIn",
-    href: "#",
-    icon: "https://www.figma.com/api/mcp/asset/f73ce058-83fd-4b3a-a956-494ce245260f",
-  },
-];
 
 export const featuredProjects: ProjectItem[] = [
   {

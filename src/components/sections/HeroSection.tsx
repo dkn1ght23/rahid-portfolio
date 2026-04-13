@@ -1,51 +1,40 @@
 import {
   Avatar,
+  Box,
   Card,
+  Flex,
   Group,
-  Image,
-  SimpleGrid,
   Stack,
   Text,
   Title,
 } from "@mantine/core";
-import {
-  heroAssets,
-  socialLinks,
-} from "@/src/lib/site-data";
+
+
 import { SectionShell } from "@/src/components/ui/section-shell";
 import { PillButton } from "@/src/components/ui/pill-button";
-import { SocialIconButton } from "@/src/components/ui/social-icon-button";
+import { SocialIconButton } from "@/src/components/ui/SocialIconButton";
+import hero_img from "@/public/assets/hero_img.png"
+import Image from "next/image";
+import { IconBrandInstagram, IconMail, IconBrandDribbble, IconBrandLinkedin, IconBrandX  } from "@tabler/icons-react";
 
 export function HeroSection() {
   return (
     <SectionShell py={{ base: 24, md: 40 }}>
       <Stack gap={24}>
-        <Group justify="flex-end">
-          <Card
-            radius={24}
-            p={0}
-            style={{
-              width: 292,
-              maxWidth: "100%",
-              overflow: "hidden",
-              boxShadow: "0 16px 34px rgba(16,16,16,0.06)",
-            }}
-          >
-            <Image src={heroAssets.portrait} alt="Portrait collage" h={172} fit="cover" />
-          </Card>
-        </Group>
+        <Flex justify="flex-end">
+            <Image src={hero_img} alt="Portrait collage" width={300} height={172}  />
+        </Flex>
 
-        <SimpleGrid cols={{ base: 1, md: 2 }} spacing={32} verticalSpacing={24}>
+       
           <Stack gap={20}>
             <Group gap={10} wrap="nowrap" align="center">
-              <Avatar
-                radius={12}
-                size={48}
-                styles={{
-                  root: {
+              <Box
+                w={45}
+                h={56}
+                bg="#D9D9D9"
+                style={{
                     transform: "rotate(-5deg)",
-                    background: "#d9d9d9",
-                  },
+                    borderRadius: 12,
                 }}
               />
               <Text fz={20} c="dark.9" style={{ lineHeight: 1.12 }}>
@@ -88,31 +77,34 @@ export function HeroSection() {
               </Text>
             </Stack>
 
-            <Group gap={12}>
-              <PillButton label="View My Work" icon={heroAssets.arrowDown} />
+            <Flex>
+              <Group gap={12}>
+              <PillButton label="View My Work" />
               <Card
                 radius="xl"
                 p={12}
                 bg="#f7f7f7"
                 style={{ boxShadow: "0 10px 24px rgba(16,16,16,0.05)" }}
               >
-                <Image src={heroAssets.emailIcon} alt="Email" w={20} h={20} />
+                <IconMail color="#000000" />
               </Card>
             </Group>
-          </Stack>
-
-          <Stack gap={16} maw={296} ml="auto" mt={{ base: 0, md: 12 }} align="flex-start">
+             <Stack gap={16} maw={296} ml="auto" mt={{ base: 0, md: 12 }} align="flex-start">
             <Group gap={12}>
-              {socialLinks.map((item) => (
-                <SocialIconButton key={item.label} {...item} />
-              ))}
+             <SocialIconButton icon={<IconBrandInstagram size={20}/>} label="Instagram" href="https://instagram.com" />
+             <SocialIconButton icon={<IconBrandX  size={20}/>} label="Instagram" href="https://instagram.com" />
+             <SocialIconButton icon={<IconBrandDribbble  size={20}/>} label="Instagram" href="https://instagram.com" />
+             <SocialIconButton icon={<IconBrandLinkedin  size={20}/>} label="Instagram" href="https://instagram.com" />
             </Group>
             <Text fz={16} c="rgba(0,0,0,0.70)" style={{ lineHeight: 1.5 }}>
               UI Designer focused on clean, engaging, and high-performing
               interfaces.
             </Text>
           </Stack>
-        </SimpleGrid>
+            </Flex>
+          </Stack>
+
+       
       </Stack>
     </SectionShell>
   );

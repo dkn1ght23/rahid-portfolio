@@ -1,7 +1,9 @@
-import { ActionIcon, Image } from "@mantine/core";
+import { ActionIcon } from "@mantine/core";
+import { JSX } from "react";
 
+// Define the SocialIconButtonProps type
 type SocialIconButtonProps = {
-  icon: string;
+  icon: JSX.Element;
   label: string;
   href: string;
 };
@@ -29,7 +31,7 @@ export function SocialIconButton({
         },
       }}
     >
-      <Image src={icon} alt={label} w={18} h={18} />
+      {icon}
     </ActionIcon>
   );
 }
