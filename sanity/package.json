@@ -17,7 +17,7 @@
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
-    "@types/node": "^25.9.1",
+    "@types/node": "^20.19.41",
     "typescript": "^5.8.3"
   }
 }
