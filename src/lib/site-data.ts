@@ -2,10 +2,8 @@ export type ProjectItem = {
   title: string;
   category: string;
   image: string;
-  width: "wide" | "standard" | "narrow";
+  url?: string;
   bg?: string;
-  imageFit?: "cover" | "contain";
-  imagePosition?: string;
 };
 
 export type ServiceItem = {
@@ -31,23 +29,20 @@ export const featuredProjects: ProjectItem[] = [
   {
     title: "Clairo",
     category: "SaaS dashboard redesign",
-    image: "https://www.figma.com/api/mcp/asset/e88596cc-c09e-4d7e-b8e5-3e61c5fcb9fd",
-    width: "wide",
-    imageFit: "cover",
+    image: "/assets/clairo.png",
+    url: "https://example.com/clairo",
   },
   {
     title: "Finance mobile flow",
     category: "App design and metrics",
-    image: "https://www.figma.com/api/mcp/asset/b82e5dea-23c4-49ce-8bf1-9af3c5c92d0c",
-    width: "standard",
-    imageFit: "cover",
+    image: "/assets/finance-mobile-flow.png",
+    url: "https://example.com/finance-mobile-flow",
   },
   {
     title: "Clairo dark dashboard",
     category: "Conversion-focused interface",
-    image: "https://www.figma.com/api/mcp/asset/e88596cc-c09e-4d7e-b8e5-3e61c5fcb9fd",
-    width: "wide",
-    imageFit: "cover",
+    image: "/assets/clairo.png",
+    url: "https://example.com/clairo-dark-dashboard",
   },
 ];
 
@@ -56,41 +51,33 @@ export const galleryProjects: ProjectItem[] = [
     title: "Mobile analytics",
     category: "Dashboard",
     image: "https://www.figma.com/api/mcp/asset/b82e5dea-23c4-49ce-8bf1-9af3c5c92d0c",
-    width: "narrow",
   },
   {
     title: "Admin dark",
     category: "Web app",
     image: "https://www.figma.com/api/mcp/asset/3d347e21-56f6-4ea9-9651-617158685f64",
-    width: "standard",
   },
   {
     title: "Welcome card",
     category: "Product UI",
     image: "https://www.figma.com/api/mcp/asset/a394f73c-c257-456a-80c9-e2f7c28af7d8",
-    width: "standard",
     bg: "#f8f8f8",
-    imageFit: "contain",
   },
   {
     title: "Billing dashboard",
     category: "Web app",
     image: "https://www.figma.com/api/mcp/asset/aed62338-dfdf-4667-971a-07077836d63f",
-    width: "standard",
   },
   {
     title: "Phone showcase",
     category: "Mobile",
     image: "https://www.figma.com/api/mcp/asset/a430f0c6-8a42-4181-81b4-e1a6e3ca200f",
-    width: "narrow",
     bg: "#e8e7ec",
-    imageFit: "contain",
   },
   {
     title: "Operations board",
     category: "Productivity",
     image: "https://www.figma.com/api/mcp/asset/fb013634-9bf7-403b-a7d8-b0e42f1e45f7",
-    width: "wide",
   },
 ];
 

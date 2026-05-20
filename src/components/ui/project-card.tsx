@@ -1,15 +1,17 @@
 import { AspectRatio, Box, Card, Image, Stack, Text } from "@mantine/core";
-import type { ProjectItem } from "@/src/lib/site-data";
+
+export type ProjectCardItem = {
+  title: string;
+  category: string;
+  image: string;
+  url?: string;
+  bg?: string;
+};
 
 type ProjectCardProps = {
-  project: ProjectItem;
+  project: ProjectCardItem;
   height?: number;
   ratio?: number;
-  imageWidth?: string | number;
-  imageHeight?: string | number;
-  imageRadius?: number;
-  imageShadow?: string;
-  imagePadding?: number;
   showMeta?: boolean;
 };
 
@@ -17,51 +19,58 @@ export function ProjectCard({
   project,
   height = 320,
   ratio = 1.55,
-  imageWidth = "100%",
-  imageHeight = "100%",
-  imageRadius = 0,
-  imageShadow,
-  imagePadding = 0,
   showMeta = false,
 }: ProjectCardProps) {
-  return (
-    <Stack gap={10}>
-      <Card
-        radius={20}
-        p={0}
-        style={{
-          overflow: "hidden",
-          background: project.bg ?? "#fbfbfb",
-          border: "none",
-          boxShadow: "none",
-        }}
-      >
-        <AspectRatio ratio={ratio} mih={height}>
-          <Box
+  const card = (
+    <Card
+      radius={20}
+      p={0}
+      style={{
+        overflow: "hidden",
+        background: project.bg ?? "#fbfbfb",
+        border: "none",
+        boxShadow: "none",
+      }}
+    >
+      <AspectRatio ratio={ratio} mih={height}>
+        <Box
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fit="cover"
             style={{
               width: "100%",
               height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: imagePadding,
             }}
-          >
-            <Image
-              src={project.image}
-              alt={project.title}
-              fit={project.imageFit ?? "cover"}
-              style={{
-                width: imageWidth,
-                height: imageHeight,
-                objectPosition: project.imagePosition ?? "center",
-                borderRadius: imageRadius,
-                boxShadow: imageShadow,
-              }}
-            />
-          </Box>
-        </AspectRatio>
-      </Card>
+          />
+        </Box>
+      </AspectRatio>
+    </Card>
+  );
+
+  return (
+    <Stack gap={10}>
+      {project.url ? (
+        <Box
+          component="a"
+          href={project.url}
+          target="_blank"
+          rel="noreferrer"
+          style={{ color: "inherit", display: "block", textDecoration: "none" }}
+        >
+          {card}
+        </Box>
+      ) : (
+        card
+      )}
       {showMeta ? (
         <Stack gap={2}>
           <Text fz={17} fw={500} c="dark.9">

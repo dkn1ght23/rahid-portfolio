@@ -5,13 +5,18 @@ import { FeaturedWorkSection } from "@/src/components/sections/FeaturedWorkSecti
 import { WorkGallerySection } from "@/src/components/sections/work-gallery-section";
 import { ServicesSection } from "@/src/components/sections/services-section";
 import { FooterSection } from "@/src/components/sections/FooterSection";
+import type { SanityProject } from "@/src/lib/sanity";
 
-export function PortfolioHomePage() {
+type PortfolioHomePageProps = {
+  featuredProjects: SanityProject[];
+};
+
+export function PortfolioHomePage({ featuredProjects }: PortfolioHomePageProps) {
   return (
     <Box bg="#ffffff">
       <NavbarSection />
       <HeroSection />
-      <FeaturedWorkSection />
+      <FeaturedWorkSection projects={featuredProjects} />
       <WorkGallerySection />
       <ServicesSection />
       <FooterSection />

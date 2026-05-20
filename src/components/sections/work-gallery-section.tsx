@@ -57,7 +57,7 @@ export function WorkGallerySection() {
                     <Image
                       src={project.image}
                       alt={project.title}
-                      fit={project.imageFit ?? "cover"}
+                      fit="cover"
                       h="100%"
                     />
                   </Card>

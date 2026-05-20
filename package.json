@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sanity:dev": "npm --prefix sanity run dev"
   },
   "dependencies": {
     "@mantine/core": "^9.0.0",
+    "@sanity/client": "^6.29.0",
+    "@sanity/image-url": "^1.1.0",
     "@tabler/icons-react": "^3.41.1",
     "next": "16.2.2",
     "react": "19.2.4",

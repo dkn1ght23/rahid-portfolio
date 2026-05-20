@@ -3,15 +3,23 @@ import { IconArrowDown } from "@tabler/icons-react";
 
 type PillButtonProps = {
   label: string;
+  icon?: string;
   reversed?: boolean;
   dark?: boolean;
 };
 
 export function PillButton({
   label,
+  icon,
   reversed = false,
   dark = true,
 }: PillButtonProps) {
+  const iconNode = icon ? (
+    <Image src={icon} alt="" w={16} h={16} fit="contain" />
+  ) : (
+    <IconArrowDown color="#000000" />
+  );
+
   return (
     <Button
       radius={33}
@@ -34,7 +42,7 @@ export function PillButton({
               flexShrink: 0,
             }}
           >
-            <IconArrowDown color="#000000" />
+            {iconNode}
           </Group>
         )
       }
@@ -52,7 +60,7 @@ export function PillButton({
               flexShrink: 0,
             }}
           >
-      <IconArrowDown color="#000000" />
+            {iconNode}
           </Group>
         ) : undefined
       }

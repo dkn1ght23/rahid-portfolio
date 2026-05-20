@@ -6,7 +6,7 @@ import { SectionShell } from "@/src/components/ui/section-shell";
 export function ServicesSection() {
   return (
     <SectionShell py={{ base: 48, md: 80 }}>
-      <Stack gap={{ base: 40, md: 74 }}>
+      <Stack gap={0} style={{ gap: "clamp(40px, 8vw, 74px)" }}>
         <Title
           order={2}
           fw={500}

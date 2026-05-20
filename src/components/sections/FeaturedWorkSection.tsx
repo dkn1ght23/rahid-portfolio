@@ -1,10 +1,25 @@
 import { Box, Button, Group, Stack, Text } from "@mantine/core";
-import { featuredProjects, heroAssets } from "@/src/lib/site-data";
 import { ProjectCard } from "@/src/components/ui/project-card";
 import { SectionShell } from "@/src/components/ui/section-shell";
 import { IconArrowDown } from "@tabler/icons-react";
+import { projectImageUrl, type SanityProject } from "@/src/lib/sanity";
 
-export function FeaturedWorkSection() {
+type FeaturedWorkSectionProps = {
+  projects: SanityProject[];
+};
+
+const projectLayouts = [
+  {
+    wrapper: { width: "100%", maxWidth: 680 },
+    card: { height: 500, ratio: 680 / 500 },
+  },
+  {
+    wrapper: { width: "100%", maxWidth: 482, alignSelf: "flex-end" },
+    card: { height: 390, ratio: 482 / 390 },
+  },
+];
+
+export function FeaturedWorkSection({ projects }: FeaturedWorkSectionProps) {
   return (
     <SectionShell py={{ base: 48, md: 80 }}>
       <Box
@@ -14,41 +29,24 @@ export function FeaturedWorkSection() {
           gap: 32,
         }}
       >
-        <Box style={{ width: "100%", maxWidth: 680 }}>
-          <ProjectCard
-            project={featuredProjects[0]}
-            height={500}
-            ratio={680 / 500}
-            imageWidth={498}
-            imageHeight={322}
-            imagePadding={32}
-            imageRadius={12}
-            imageShadow="0 18px 34px rgba(16,16,16,0.18)"
-          />
-        </Box>
-        <Box style={{ width: "100%", maxWidth: 482, alignSelf: "flex-end" }}>
-          <ProjectCard
-            project={featuredProjects[1]}
-            height={390}
-            ratio={482 / 390}
-            imageWidth={250}
-            imageHeight={322}
-            imagePadding={24}
-            imageRadius={0}
-          />
-        </Box>
-        <Box style={{ width: "100%", maxWidth: 680 }}>
-          <ProjectCard
-            project={featuredProjects[2]}
-            height={500}
-            ratio={680 / 500}
-            imageWidth={498}
-            imageHeight={322}
-            imagePadding={32}
-            imageRadius={12}
-            imageShadow="0 18px 34px rgba(16,16,16,0.18)"
-          />
-        </Box>
+        {projects.map((project, index) => {
+          const layout = projectLayouts[index % projectLayouts.length];
+
+          return (
+            <Box key={project._id} style={layout.wrapper}>
+              <ProjectCard
+                project={{
+                  title: project.title,
+                  category: project.category,
+                  image: projectImageUrl(project.image),
+                  url: project.url,
+                }}
+                height={layout.card.height}
+                ratio={layout.card.ratio}
+              />
+            </Box>
+          );
+        })}
         <Box style={{ width: "100%", maxWidth: 286, alignSelf: "flex-end" }}>
           <Stack gap={22}>
            <Box>
