@@ -114,7 +114,7 @@ export function HeroSection() {
                 variant="filled"
                 radius="xl"
                 size={44}
-                bg="#f7f7f7"
+                bg="#F5F5F5"
                 c="#000000"
                 style={{ boxShadow: "0 10px 24px rgba(16,16,16,0.05)" }}
               >
