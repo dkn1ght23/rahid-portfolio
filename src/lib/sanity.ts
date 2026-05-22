@@ -30,7 +30,7 @@ export function urlFor(source: SanityImageSource) {
 }
 
 export function projectImageUrl(
-  source: SanityImageSource,
+  source: SanityImageSource | string,
   width = 1360,
   height = 1000,
 ) {

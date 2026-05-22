@@ -6,6 +6,7 @@ type PillButtonProps = {
   icon?: string;
   reversed?: boolean;
   dark?: boolean;
+  href?: string;
 };
 
 export function PillButton({
@@ -13,6 +14,7 @@ export function PillButton({
   icon,
   reversed = false,
   dark = true,
+  href,
 }: PillButtonProps) {
   const iconNode = icon ? (
     <Image src={icon} alt="" w={16} h={16} fit="contain" />
@@ -22,6 +24,8 @@ export function PillButton({
 
   return (
     <Button
+      component={href ? "a" : "button"}
+      href={href}
       radius={33}
       size="compact-md"
       variant="filled"

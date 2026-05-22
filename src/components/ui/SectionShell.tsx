@@ -3,6 +3,7 @@ import { Box, Container, type BoxProps } from "@mantine/core";
 type SectionShellProps = BoxProps & {
   children: React.ReactNode;
   containerSize?: number | string;
+  id?: string;
 };
 
 export function SectionShell({

@@ -1,4 +1,13 @@
-import { Box, Card, Group, Image, SimpleGrid, Stack, Text } from "@mantine/core";
+import {
+  Anchor,
+  Box,
+  Card,
+  Group,
+  Image,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@mantine/core";
 import { heroAssets, lifestyleBlocks } from "@/src/lib/site-data";
 
 export function FooterSection() {
@@ -28,12 +37,17 @@ export function FooterSection() {
               <Text fz={12} c="rgba(255,255,255,0.5)">
                 Email
               </Text>
-              <Group gap={6}>
-                <Text fz={16} c="white">
-                  shofikhasan.uiux@gmail.com
-                </Text>
-                <Image src={heroAssets.footerMailIcon} alt="" w={14} h={14} />
-              </Group>
+              <Anchor
+                href="mailto:shofikhasan.uiux@gmail.com"
+                style={{ textDecoration: "none" }}
+              >
+                <Group gap={6}>
+                  <Text fz={16} c="white">
+                    shofikhasan.uiux@gmail.com
+                  </Text>
+                  <Image src={heroAssets.footerMailIcon} alt="" w={14} h={14} />
+                </Group>
+              </Anchor>
             </Stack>
 
             <Stack gap={8}>

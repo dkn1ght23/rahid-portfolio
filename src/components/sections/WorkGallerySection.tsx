@@ -1,14 +1,16 @@
 import { Card, Image, SimpleGrid, Stack, Text, Title } from "@mantine/core";
 import { galleryProjects, heroAssets } from "@/src/lib/site-data";
-import { SectionShell } from "@/src/components/ui/section-shell";
-import { PillButton } from "@/src/components/ui/pill-button";
+import { SectionShell } from "@/src/components/ui/SectionShell";
+import { PillButton } from "@/src/components/ui/PillButton";
 
 export function WorkGallerySection() {
-  const firstRow = galleryProjects.slice(0, 5);
-  const secondRow = galleryProjects.slice(1, 6);
+  const galleryRows = [
+    galleryProjects.slice(0, 5),
+    galleryProjects.slice(1, 6),
+  ];
 
   return (
-    <SectionShell py={{ base: 40, md: 64 }}>
+    <SectionShell id="gallery" py={{ base: 40, md: 64 }}>
       <Stack gap={24} align="center">
         <Stack gap={4} align="center">
           <Title
@@ -39,29 +41,29 @@ export function WorkGallerySection() {
         </Stack>
 
         <Stack gap={24} w="100%">
-          {[firstRow, secondRow].map((row, index) => (
-            <SimpleGrid key={index} cols={{ base: 2, md: 5 }} spacing={24}>
-                {row.map((project, itemIndex) => (
-                  <Card
-                    key={`${project.title}-${itemIndex}-${index}`}
-                    radius={20}
-                    p={0}
-                    style={{
-                      minWidth: 0,
-                      aspectRatio: "1 / 1",
-                      overflow: "hidden",
-                      background: project.bg ?? "#f8f8f8",
-                      boxShadow: "var(--shadow-soft)",
-                    }}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fit="cover"
-                      h="100%"
-                    />
-                  </Card>
-                ))}
+          {galleryRows.map((row, rowIndex) => (
+            <SimpleGrid key={rowIndex} cols={{ base: 2, md: 5 }} spacing={24}>
+              {row.map((project, itemIndex) => (
+                <Card
+                  key={`${project._id}-${rowIndex}-${itemIndex}`}
+                  radius={20}
+                  p={0}
+                  style={{
+                    minWidth: 0,
+                    aspectRatio: "1 / 1",
+                    overflow: "hidden",
+                    background: project.bg ?? "#f8f8f8",
+                    boxShadow: "var(--shadow-soft)",
+                  }}
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fit="cover"
+                    h="100%"
+                  />
+                </Card>
+              ))}
             </SimpleGrid>
           ))}
         </Stack>

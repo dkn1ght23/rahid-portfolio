@@ -1,9 +1,8 @@
 import { ActionIcon } from "@mantine/core";
-import { JSX } from "react";
+import type { ReactNode } from "react";
 
-// Define the SocialIconButtonProps type
 type SocialIconButtonProps = {
-  icon: JSX.Element;
+  icon: ReactNode;
   label: string;
   href: string;
 };

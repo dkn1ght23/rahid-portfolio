@@ -1,27 +1,28 @@
-import { Box, Button, Group, Stack, Text } from "@mantine/core";
-import { ProjectCard } from "@/src/components/ui/project-card";
-import { SectionShell } from "@/src/components/ui/section-shell";
-import { IconArrowDown } from "@tabler/icons-react";
-import { projectImageUrl, type SanityProject } from "@/src/lib/sanity";
+import { Box, Stack, Text } from "@mantine/core";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { ProjectCard } from "@/src/components/ui/ProjectCard";
+import { SectionShell } from "@/src/components/ui/SectionShell";
+import { PillButton } from "@/src/components/ui/PillButton";
+import { projectImageUrl } from "@/src/lib/sanity";
 
-type FeaturedWorkSectionProps = {
-  projects: SanityProject[];
+export type FeaturedProject = {
+  _id: string;
+  title: string;
+  category: string;
+  image: SanityImageSource | string;
+  url?: string;
 };
 
-const projectLayouts = [
-  {
-    wrapper: { width: "100%", maxWidth: 680 },
-    card: { height: 500, ratio: 680 / 500 },
-  },
-  {
-    wrapper: { width: "100%", maxWidth: 482, alignSelf: "flex-end" },
-    card: { height: 390, ratio: 482 / 390 },
-  },
-];
+type FeaturedWorkSectionProps = {
+  projects: FeaturedProject[];
+};
+
+const featuredCardRatio = 680 / 500;
+const featuredCardHeight = 500;
 
 export function FeaturedWorkSection({ projects }: FeaturedWorkSectionProps) {
   return (
-    <SectionShell py={{ base: 48, md: 80 }}>
+    <SectionShell id="work" py={{ base: 48, md: 80 }}>
       <Box
         style={{
           display: "flex",
@@ -29,48 +30,35 @@ export function FeaturedWorkSection({ projects }: FeaturedWorkSectionProps) {
           gap: 32,
         }}
       >
-        {projects.map((project, index) => {
-          const layout = projectLayouts[index % projectLayouts.length];
+        {projects.map((project, index) => (
+          <Box
+            key={project._id}
+            style={{
+              width: "100%",
+              maxWidth: 680,
+              alignSelf: index % 2 === 0 ? "flex-start" : "flex-end",
+            }}
+          >
+            <ProjectCard
+              project={{
+                title: project.title,
+                category: project.category,
+                image: projectImageUrl(project.image),
+                url: project.url,
+              }}
+              height={featuredCardHeight}
+              ratio={featuredCardRatio}
+            />
+          </Box>
+        ))}
 
-          return (
-            <Box key={project._id} style={layout.wrapper}>
-              <ProjectCard
-                project={{
-                  title: project.title,
-                  category: project.category,
-                  image: projectImageUrl(project.image),
-                  url: project.url,
-                }}
-                height={layout.card.height}
-                ratio={layout.card.ratio}
-              />
-            </Box>
-          );
-        })}
         <Box style={{ width: "100%", maxWidth: 286, alignSelf: "flex-end" }}>
           <Stack gap={22}>
-           <Box>
-             <Button 
-            bg="#000000"
-            radius={33}
-            h={44}
-            rightSection={<Group
-              justify="center"
-              align="center"
-              w={36}
-              h={36}
-              style={{
-                background: "#ffffff",
-                borderRadius: "100px",
-              }}
-            >
-              <IconArrowDown color="#000000" />
-            </Group>} 
-            
-            >
-            Hire Me
-            </Button>
-           </Box>
+            <PillButton
+              label="Hire Me"
+              href="mailto:shofikhasan.uiux@gmail.com"
+              reversed
+            />
             <Text fz={16} lh="24px" c="rgba(0,0,0,0.7)">
               A collection of my designs that are simple, effective, and
               designed to perform.
